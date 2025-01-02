@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using Abercrombie.Domain.Models;
 using Axo.Shared.FileService.Service;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,18 @@ public static class InventoryApi
     [FromBody] List<PostInventoryModel> model,
     [FromServices] IFileService fileService)
   {
-    var listJson = JsonSerializer.Serialize(model, ApiSerializationContext.Default.ListPostInventoryModel);
+    var obj = new CreationFileModel<InventoryModel>
+    {
+      MerchantId = model[0].MerchantId,
+      ListInfo = model.Select(x => new InventoryModel
+      {
+        Sku = x.Upc,
+        Qty = x.Stock,
+        IsInStock = x.Stock > 0 ? 1 : 0
+      }).ToList()
+    };
+    
+    var listJson = JsonSerializer.Serialize(obj, ApiSerializationContext.Default.CreationFileModelInventoryModel);
 
     var byteArray = Encoding.UTF8.GetBytes(listJson);
 

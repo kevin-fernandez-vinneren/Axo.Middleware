@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Abercrombie.Domain.Models;
 using Ulta.Domain.Models;
 
 namespace Ulta.Infrastructure.Serializer;
@@ -19,7 +20,9 @@ namespace Ulta.Infrastructure.Serializer;
 [JsonSerializable(typeof(double))]
 [JsonSerializable(typeof(object))]
 [JsonSerializable(typeof(DateTime))]
-[JsonSerializable(typeof(List<PostInventoryModel>))]
 [JsonSerializable(typeof(List<PostPriceModel>))]
+[JsonSerializable(typeof(List<PostInventoryModel>))]
+[JsonSerializable(typeof(CreationFileModel<PriceModel>))]
+[JsonSerializable(typeof(CreationFileModel<InventoryModel>))]
 [JsonSerializable(typeof(Dictionary<string, object>))]
 public partial class ApiSerializationContext : JsonSerializerContext;

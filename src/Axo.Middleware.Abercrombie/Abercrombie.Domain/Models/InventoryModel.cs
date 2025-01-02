@@ -1,4 +1,4 @@
-namespace Axo.Functions.FileSegmentation.Models;
+namespace Abercrombie.Domain.Models;
 
 public class InventoryModel
 {

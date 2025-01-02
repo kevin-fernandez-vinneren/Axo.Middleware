@@ -23,6 +23,8 @@ namespace Abercrombie.Infrastructure.Serializer;
 [JsonSerializable(typeof(DateTime))]
 [JsonSerializable(typeof(LambdaInput))]
 [JsonSerializable(typeof(List<InventoryItem>))]
+[JsonSerializable(typeof(CreationFileModel<PriceModel>))]
+[JsonSerializable(typeof(CreationFileModel<InventoryModel>))]
 [JsonSerializable(typeof(KnGetInventoryRequest))]
 [JsonSerializable(typeof(KnInventoryResponseModel))]
 [JsonSerializable(typeof(IEnumerable<PriceEcommerce>))]

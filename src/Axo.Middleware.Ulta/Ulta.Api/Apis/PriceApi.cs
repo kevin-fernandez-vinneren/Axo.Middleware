@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using Abercrombie.Domain.Models;
 using Axo.Shared.FileService.Service;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,17 @@ public static class PriceApi
     [FromBody] List<PostPriceModel> model,
     [FromServices] IFileService fileService)
   {
-    var listJson = JsonSerializer.Serialize(model, ApiSerializationContext.Default.ListPostPriceModel);
+    var obj = new CreationFileModel<PriceModel>
+    {
+      MerchantId = model[0].MerchantId,
+      ListInfo = model.Select(x => new PriceModel
+      {
+        Sku = x.Upc,
+        Price = x.Price
+      }).ToList()
+    };
+    
+    var listJson = JsonSerializer.Serialize(obj, ApiSerializationContext.Default.CreationFileModelPriceModel);
 
     var byteArray = Encoding.UTF8.GetBytes(listJson);
 

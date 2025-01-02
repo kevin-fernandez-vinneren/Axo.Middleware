@@ -33,12 +33,12 @@ public class FileSegmentationService(IFileService fileService) : IFileSegmentati
 
   private async Task<List<string>?> InventorySegmentation(Stream file)
   {
-    var fileContent = JsonSerializer.Deserialize(file, CustomSerializationContext.Default.ListInventoryModel);
+    var fileContent = JsonSerializer.Deserialize(file, CustomSerializationContext.Default.FileContentModelInventoryModel);
 
     var segmentedInventory = new List<List<InventoryModel>>();
-    for (int i = 0; i < fileContent.Count; i += 1000)
+    for (var i = 0; i < fileContent.ListInfo.Count; i += 1000)
     {
-      segmentedInventory.Add(fileContent.Skip(i).Take(1000).ToList());
+      segmentedInventory.Add(fileContent.ListInfo.Skip(i).Take(1000).ToList());
     }
     
     var fileNumber = 1;
@@ -46,7 +46,13 @@ public class FileSegmentationService(IFileService fileService) : IFileSegmentati
     
     foreach (var item in segmentedInventory)
     {
-      var jsonInventory = JsonSerializer.Serialize(item, CustomSerializationContext.Default.ListInventoryModel);
+      var obj = new FileContentModel<InventoryModel>
+      {
+        MerchantId = fileContent.MerchantId,
+        ListInfo = item
+      };
+      
+      var jsonInventory = JsonSerializer.Serialize(obj, CustomSerializationContext.Default.FileContentModelInventoryModel);
       
       var byteArray = Encoding.UTF8.GetBytes(jsonInventory);
       
@@ -68,12 +74,12 @@ public class FileSegmentationService(IFileService fileService) : IFileSegmentati
 
   private async Task<List<string>?> PriceSegmentation(Stream file)
   {
-    var fileContent = JsonSerializer.Deserialize(file, CustomSerializationContext.Default.ListPriceModel);
+    var fileContent = JsonSerializer.Deserialize(file, CustomSerializationContext.Default.FileContentModelPriceModel);
 
     var segmentedPrice = new List<List<PriceModel>>();
-    for (int i = 0; i < fileContent.Count; i += 1000)
+    for (var i = 0; i < fileContent.ListInfo.Count; i += 1000)
     {
-      segmentedPrice.Add(fileContent.Skip(i).Take(1000).ToList());
+      segmentedPrice.Add(fileContent.ListInfo.Skip(i).Take(1000).ToList());
     }
 
     var fileNumber = 1;
@@ -81,7 +87,13 @@ public class FileSegmentationService(IFileService fileService) : IFileSegmentati
 
     foreach (var item in segmentedPrice)
     {
-      var jsonPrice = JsonSerializer.Serialize(item, CustomSerializationContext.Default.ListPriceModel);
+      var obj = new FileContentModel<PriceModel>
+      {
+        MerchantId = fileContent.MerchantId,
+        ListInfo = item
+      };
+      
+      var jsonPrice = JsonSerializer.Serialize(obj, CustomSerializationContext.Default.FileContentModelPriceModel);
 
       var byteArray = Encoding.UTF8.GetBytes(jsonPrice);
 

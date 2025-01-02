@@ -3,6 +3,7 @@ using System.Text.Json;
 using Abercrombie.Application.Contracts.ExternalApis;
 using Abercrombie.Application.Contracts.Repositories;
 using Abercrombie.Application.Contracts.Services;
+using Abercrombie.Domain.Entities;
 using Abercrombie.Domain.Models;
 using Abercrombie.Infrastructure.Serializer;
 using Axo.Shared.FileService.Service;
@@ -27,8 +28,18 @@ public class AbercrombieService(
     {
       return false;
     }
+    
+    var obj = new CreationFileModel<PriceModel>
+    {
+      MerchantId = merchantId,
+      ListInfo = priceInfo.Select(x => new PriceModel
+      {
+        Sku = x.Upc,
+        Price = x.PrecioLista,
+      }).ToList()
+    };
 
-    var jsonPrice = JsonSerializer.Serialize(priceInfo, CustomSerializationContext.Default.IEnumerablePriceEcommerce);
+    var jsonPrice = JsonSerializer.Serialize(obj, CustomSerializationContext.Default.CreationFileModelPriceModel);
 
     var byteArray = Encoding.UTF8.GetBytes(jsonPrice);
 
@@ -93,9 +104,22 @@ public class AbercrombieService(
       {
         break;
       }
+      
+      cicle++;
     }
     
-    var jsonInventory = JsonSerializer.Serialize(inventory, CustomSerializationContext.Default.ListInventoryItem);
+    var obj = new CreationFileModel<InventoryModel>
+    {
+      MerchantId = merchantId,
+      ListInfo = inventory.Select(x => new InventoryModel
+      {
+        Sku = x.Ean,
+        Qty = x.Stock,
+        IsInStock = x.Stock > 0 ? 1 : 0
+      }).ToList()
+    };
+    
+    var jsonInventory = JsonSerializer.Serialize(obj, CustomSerializationContext.Default.CreationFileModelInventoryModel);
     
     var byteArray = Encoding.UTF8.GetBytes(jsonInventory);
     

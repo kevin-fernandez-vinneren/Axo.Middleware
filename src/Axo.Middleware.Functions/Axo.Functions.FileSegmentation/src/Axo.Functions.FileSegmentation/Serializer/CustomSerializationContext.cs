@@ -21,7 +21,7 @@ namespace Axo.Functions.FileSegmentation.Serializer;
 [JsonSerializable(typeof(object))]
 [JsonSerializable(typeof(DateTime))]
 [JsonSerializable(typeof(LambdaInput))]
-[JsonSerializable(typeof(List<InventoryModel>))]
-[JsonSerializable(typeof(List<PriceModel>))]
+[JsonSerializable(typeof(FileContentModel<PriceModel>))]
+[JsonSerializable(typeof(FileContentModel<InventoryModel>))]
 [JsonSerializable(typeof(Dictionary<string, object>))]
 public partial class CustomSerializationContext : JsonSerializerContext;
