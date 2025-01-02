@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Amazon.Lambda.Logging.AspNetCore" Version="3.1.1" />
+      <PackageReference Include="Dapper" Version="2.1.35" />
+      <PackageReference Include="Dapper.AOT" Version="1.0.31" />
+      <PackageReference Include="Kopticx.Logify" Version="1.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+      <PackageReference Include="MySqlConnector" Version="2.4.0" />
+      <PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Axo.Middleware.Shared\Axo.Shared.FileService\Axo.Shared.FileService.csproj" />
+      <ProjectReference Include="..\..\Axo.Middleware.Shared\Axo.Shared.SecretsManagerService\Axo.Shared.SecretsManagerService.csproj" />
+      <ProjectReference Include="..\Abercrombie.Application\Abercrombie.Application.csproj" />
+    </ItemGroup>
+
+</Project>
