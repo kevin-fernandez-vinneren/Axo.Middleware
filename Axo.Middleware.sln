@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axo.Functions.FileSegmentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axo.Functions.UploadInfo", "src\Axo.Middleware.Functions\Axo.Functions.UploadInfo\src\Axo.Functions.UploadInfo\Axo.Functions.UploadInfo.csproj", "{06E0D3B9-9C5B-4E38-BB44-B6B49BEA1774}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axo.Functions.Save", "src\Axo.Middleware.Functions\Axo.Functions.Save\src\Axo.Functions.Save\Axo.Functions.Save.csproj", "{F76CBCAF-B5BB-440C-9EEF-29D0ADD37837}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,7 @@ Global
 		{A7FE7266-CADD-4F55-9569-466EEA5FF944} = {2A96A8D9-B35F-4670-B5BF-8105CC246E70}
 		{34E6B65C-B356-4526-87E9-F598AFA6A40A} = {91C1E325-3AE0-4755-8622-C68F8B65F12B}
 		{06E0D3B9-9C5B-4E38-BB44-B6B49BEA1774} = {91C1E325-3AE0-4755-8622-C68F8B65F12B}
+		{F76CBCAF-B5BB-440C-9EEF-29D0ADD37837} = {91C1E325-3AE0-4755-8622-C68F8B65F12B}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E9605E30-8F49-45E5-85E6-559E15454697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -100,5 +103,9 @@ Global
 		{06E0D3B9-9C5B-4E38-BB44-B6B49BEA1774}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E0D3B9-9C5B-4E38-BB44-B6B49BEA1774}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06E0D3B9-9C5B-4E38-BB44-B6B49BEA1774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76CBCAF-B5BB-440C-9EEF-29D0ADD37837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76CBCAF-B5BB-440C-9EEF-29D0ADD37837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76CBCAF-B5BB-440C-9EEF-29D0ADD37837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76CBCAF-B5BB-440C-9EEF-29D0ADD37837}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
