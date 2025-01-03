@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Axo.Functions.Save.Models;
 
 namespace Axo.Functions.Save.Serializer;
 
@@ -18,5 +19,8 @@ namespace Axo.Functions.Save.Serializer;
 [JsonSerializable(typeof(double))]
 [JsonSerializable(typeof(object))]
 [JsonSerializable(typeof(DateTime))]
+[JsonSerializable(typeof(DateTime))]
+[JsonSerializable(typeof(FileContentModel<PriceModel>))]
+[JsonSerializable(typeof(FileContentModel<InventoryModel>))]
 [JsonSerializable(typeof(Dictionary<string, object>))]
 public partial class CustomSerializationContext : JsonSerializerContext;

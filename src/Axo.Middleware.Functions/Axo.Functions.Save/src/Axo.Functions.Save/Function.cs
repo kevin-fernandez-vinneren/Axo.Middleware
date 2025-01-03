@@ -3,14 +3,16 @@ using Amazon.Lambda.RuntimeSupport;
 using Amazon.Lambda.Serialization.SystemTextJson;
 using System.Text.Json.Serialization;
 using Amazon.Lambda.Annotations;
+using Axo.Functions.Save.Common;
+using Axo.Functions.Save.Services;
 
 namespace Axo.Functions.Save;
 
-public class Function
+public class Function(ISaveService saveService)
 {
   [LambdaFunction]
-  public string FunctionHandler(string input, ILambdaContext context)
+  public async Task FunctionHandler(LambdaInput input, ILambdaContext context)
   {
-    return input.ToUpper();
+    await saveService.HandleSaveLogic(input);
   }
 }
