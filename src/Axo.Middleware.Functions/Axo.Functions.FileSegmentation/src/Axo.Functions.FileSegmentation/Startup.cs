@@ -5,6 +5,7 @@ using Axo.Functions.FileSegmentation.Services;
 using Axo.Shared.FileService;
 using Logify;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Axo.Functions.FileSegmentation;
 
@@ -17,6 +18,15 @@ public class Startup
     {
       TypeInfoResolver = CustomSerializationContext.Default
     };
+    
+    services.AddLogging(opc =>
+    {
+      opc.AddLambdaLogger(new LambdaLoggerOptions
+      {
+        IncludeNewline = false,
+        IncludeException = true
+      });
+    });
 
     services.AddLogifyService(jsonSerializerOptions);
     services.AddFileService();

@@ -1,13 +1,11 @@
 ﻿using System.Text.Json;
 using Amazon.Lambda.Annotations;
-using Axo.Functions.UploadInfo.Services;
-using Axo.Shared.FileService;
+using Axo.Functions.FilesTrigger.Serializer;
 using Logify;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using CustomSerializationContext = Axo.Functions.UploadInfo.Serializer.CustomSerializationContext;
 
-namespace Axo.Functions.UploadInfo;
+namespace Axo.Functions.FilesTrigger;
 
 [LambdaStartup]
 public class Startup
@@ -29,8 +27,5 @@ public class Startup
     });
 
     services.AddLogifyService(jsonSerializerOptions);
-    services.AddFileService();
-
-    services.AddTransient<IUploadInfoService, UploadInfoService>();
   }
 }
