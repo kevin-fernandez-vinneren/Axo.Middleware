@@ -24,5 +24,6 @@
         <PackageReference Include="Amazon.Lambda.S3Events" Version="3.1.0" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.4" />
         <PackageReference Include="Kopticx.Logify" Version="1.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
     </ItemGroup>
 </Project>
