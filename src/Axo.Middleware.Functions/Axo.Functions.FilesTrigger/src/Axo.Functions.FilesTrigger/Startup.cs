@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Amazon.Lambda.Annotations;
+using Amazon.StepFunctions;
 using Axo.Functions.FilesTrigger.Serializer;
 using Logify;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,5 +28,7 @@ public class Startup
     });
 
     services.AddLogifyService(jsonSerializerOptions);
+
+    services.AddTransient<IAmazonStepFunctions, AmazonStepFunctionsClient>();
   }
 }

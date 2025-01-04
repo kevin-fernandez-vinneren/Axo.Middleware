@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using Amazon.Lambda.S3Events;
+using Axo.Functions.FilesTrigger.Models;
 
 namespace Axo.Functions.FilesTrigger.Serializer;
 
@@ -20,5 +21,6 @@ namespace Axo.Functions.FilesTrigger.Serializer;
 [JsonSerializable(typeof(object))]
 [JsonSerializable(typeof(S3Event))]
 [JsonSerializable(typeof(DateTime))]
+[JsonSerializable(typeof(StepFunctionInput))]
 [JsonSerializable(typeof(Dictionary<string, object>))]
 public partial class CustomSerializationContext : JsonSerializerContext;
